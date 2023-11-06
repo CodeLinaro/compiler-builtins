@@ -291,6 +291,43 @@ mod c {
             ("__ucmpdi2", "ucmpdi2.c"),
         ]);
 
+        if target_arch == "hexagon" {
+            sources.extend(&[
+                ("__hexagon_moddi3", "hexagon/moddi3.S"),
+                ("__hexagon_umodsi3", "hexagon/umodsi3.S"),
+                ("__hexagon_udivsi3", "hexagon/udivsi3.S"),
+                ("__hexagon_udivmodsi4", "hexagon/udivmodsi4.S"),
+                ("__hexagon_udivmoddi4", "hexagon/udivmoddi4.S"),
+                ("__hexagon_udivdi3", "hexagon/udivdi3.S"),
+                ("__hexagon_modsi3", "hexagon/modsi3.S"),
+                ("__hexagon_umoddi3", "hexagon/umoddi3.S"),
+                (
+                    "hexagon_memcpy_forward_vp4cp4n2",
+                    "hexagon/memcpy_forward_vp4cp4n2.S",
+                ),
+                (
+                    "__hexagon_memcpy_likely_aligned_min32bytes_mult8bytes",
+                    "hexagon/memcpy_likely_aligned.S",
+                ),
+                ("fast2_dadd_asm", "hexagon/fastmath2_dlib_asm.S"),
+                ("fast2_ldadd_asm", "hexagon/fastmath2_ldlib_asm.S"),
+                ("__hexagon_divsi3", "hexagon/divsi3.S"),
+                ("__hexagon_divdi3", "hexagon/divdi3.S"),
+                ("__hexagon_sqrtf", "hexagon/sfsqrt_opt.S"),
+                ("__hexagon_divsf3", "hexagon/sfdiv_opt.S"),
+                ("__hexagon_sqrtdf2", "hexagon/dfsqrt.S"),
+                ("__hexagon_sqrt", "hexagon/dfsqrt.S"),
+                ("__hexagon_mindf3", "hexagon/dfminmax.S"),
+                ("__hexagon_maxdf3", "hexagon/dfminmax.S"),
+                ("__hexagon_muldf3", "hexagon/dfmul.S"),
+                ("__hexagon_divdf3", "hexagon/dfdiv.S"),
+                ("__hexagon_adddf3", "hexagon/dfaddsub.S"),
+                ("__hexagon_subdf3", "hexagon/dfaddsub.S"),
+                ("__hexagon_fmadf4", "hexagon/dffma.S"),
+                ("__hexagon_fmadf5", "hexagon/dffma.S"),
+            ]);
+        }
+
         if consider_float_intrinsics {
             sources.extend(&[
                 ("__divdc3", "divdc3.c"),
